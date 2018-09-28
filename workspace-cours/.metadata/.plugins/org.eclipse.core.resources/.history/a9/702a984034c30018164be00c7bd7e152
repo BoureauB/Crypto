@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RotPos {
 
-	static String MESSAGE = "Test d'une string";
+	static String MESSAGE = "La plupart des hommes ne savent ce que c'est que de rentrer dans eux-mêmes pour y entendre la voix de la vérité, selon laquelle ils doivent juger de toutes choses. Ce sont leurs yeux qui règlent leurs décisions.";
 	static List<String> ALPHABET = Arrays.asList("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
 			"o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
 

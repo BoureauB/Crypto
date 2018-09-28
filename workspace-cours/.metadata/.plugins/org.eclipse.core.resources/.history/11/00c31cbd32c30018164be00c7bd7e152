@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RotPos {
 
-	static String MESSAGE = "Test d'une string";
+	static String MESSAGE = "alexandre louf";
 	static List<String> ALPHABET = Arrays.asList("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
 			"o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
 
@@ -13,7 +13,7 @@ public class RotPos {
 		System.out.println("Rot<pos> de : " + MESSAGE);
 		String encodeString = encodeString(MESSAGE);
 		System.out.println("Encode : " + encodeString);
-		System.out.println("Decode : " + decodeString(encodeString));
+		System.out.println("Decode : " + decodeString("cgqsnz irwp ysi xhmnzp"));
 	}
 
 	private static String encodeString(String message) {
@@ -35,15 +35,12 @@ public class RotPos {
 				if (!ALPHABET.contains(letter)) {
 					result.append(letter);
 				} else if (encode) {
-					position = (ALPHABET.indexOf(letter) + iterator) % ALPHABET.size() + 1;
-					if (position >= 26) {
-						position = 0;
-					}
-					result.append(ALPHABET.get(position));
+					result.append(ALPHABET.get((ALPHABET.indexOf(letter) + iterator) % ALPHABET.size() + 1));
+
 				} else if (!encode) {
 					position = (ALPHABET.indexOf(letter) - iterator) % ALPHABET.size() - 1;
 					if (position < 0) {
-						position = position + 26;
+						position = position + 25;
 					}
 					result.append(ALPHABET.get(position));
 				}
