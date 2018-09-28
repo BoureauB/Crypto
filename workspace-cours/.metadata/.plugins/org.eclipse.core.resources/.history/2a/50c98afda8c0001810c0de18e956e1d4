@@ -1,0 +1,44 @@
+package pos;
+
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Pos {	
+
+	public static void main(String[] args) {
+
+	String result = encodeString("Test");
+	System.out.println(result);
+
+	}
+
+	private static String encodeString(String message) {
+		if(message != null) {
+			int rot = 13;
+			StringBuilder stringBuilder = new StringBuilder();
+			String[] alphabet = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"};
+			message = message.toLowerCase();
+			String[] splited = message.split("(?!^)");
+			Integer position = null;
+			Integer rest = null;
+			
+			for(String i : splited) {
+				java.util.List<String> list = Arrays.asList(alphabet);
+				if(list.contains(i)) {
+					position = Arrays.asList(alphabet).indexOf(i) + 13;
+					if(position > alphabet.length) {
+						rest = position - alphabet.length;
+					}
+					if(rest != null) {
+						stringBuilder.append(list.get(rest);
+					}
+				}
+			}
+			return stringBuilder.toString();
+			
+		} else {
+			return "Message null";
+		}
+	}		
+}

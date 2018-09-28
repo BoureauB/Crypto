@@ -1,0 +1,52 @@
+package cours_1;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class RotPos {
+
+	static String MESSAGE = "salut";
+	static List<String> ALPHABET = Arrays.asList("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
+			"o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
+
+	public static void main(String[] args) {
+		System.out.println("Rot<pos> de : " + MESSAGE);
+		String encodeString = encodeString(MESSAGE);
+		System.out.println("Encode : " + encodeString);
+		System.out.println("Decode : " + decodeString("cgqsnz irwp ysi xhmnzp"));
+	}
+
+	private static String encodeString(String message) {
+		return code(message, true);
+	}
+
+	private static String decodeString(String message) {
+		return code(message, false);
+	}
+
+	private static String code(String message, Boolean encode) {
+		StringBuilder result = new StringBuilder();
+		if (message != null) {
+			message = message.toLowerCase();
+			List<String> splitedChar = Arrays.asList(message.split("(?!^)"));
+			Integer iterator = 0;
+			String box = null;
+			for (String letter : splitedChar) {
+				if (!ALPHABET.contains(letter)) {
+					result.append(letter);
+				} else if (encode) {
+					result.append(ALPHABET.get((ALPHABET.indexOf(letter) + iterator) % ALPHABET.size() + 1));
+					iterator++;
+				} else if (!encode) {
+					box = ALPHABET.get((ALPHABET.indexOf(letter) - iterator) % ALPHABET.size() - 1);
+					result.append(
+					iterator++;
+				}
+			}
+		} else {
+			return "Message null";
+		}
+		return result.toString();
+	}
+
+}
