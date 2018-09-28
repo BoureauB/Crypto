@@ -1,0 +1,71 @@
+package cryptologie;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class RotPos {
+
+	static String MESSAGE = "Test d'une string";
+	static List<String> ALPHABET = Arrays.asList("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
+			"o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
+
+	public static void main(String[] args) {
+		System.out.println("Rot<pos> de : " + MESSAGE);
+		String encodeString = encodeString(MESSAGE);
+		System.out.println("Encode : " + encodeString);
+		System.out.println("Decode : " + decodeString(encodeString));
+	}
+
+	/**
+	 * @param message - the string to encode
+	 * @return the encoded String
+	 */
+	private static String encodeString(String message) {
+		return code(message, true);
+	}
+
+	/**
+	 * @param message - the string to decode
+	 * @return the decoded String
+	 */
+	private static String decodeString(String message) {
+		return code(message, false);
+	}
+
+	/**
+	 * @param message - the string to code
+	 * @param encode - boolean to know if it's encode or decode
+	 * @return
+	 */
+	private static String code(String message, Boolean encode) {
+		StringBuilder result = new StringBuilder();
+		if (message != null) {
+			message = message.toLowerCase();
+			List<String> splitedChar = Arrays.asList(message.split("(?!^)"));
+			Integer iterator = 0;
+			Integer position = null;
+			for (String letter : splitedChar) {
+				if (!ALPHABET.contains(letter)) {
+					result.append(letter);
+				} else if (encode) {
+					position = (ALPHABET.indexOf(letter) + iterator) % ALPHABET.size() + 1;
+					if (position >= 26) {
+						position = 0;
+					}
+					result.append(ALPHABET.get(position));
+				} else if (!encode) {
+					position = (ALPHABET.indexOf(letter) - iterator) % ALPHABET.size() - 1;
+					if (position < 0) {
+						position = position + 26;
+					}
+					result.append(ALPHABET.get(position));
+				}
+				iterator++;
+			}
+		} else {
+			return "Message null";
+		}
+		return result.toString();
+	}
+
+}
