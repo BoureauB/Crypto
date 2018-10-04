@@ -18,8 +18,8 @@ public class DiffieHellman {
 		int S_B = (int) Math.pow(A, b) % p;
 
 		if (S_A == S_B) {
-			System.out.println("Fonctionne");
-			System.out.println("Secret : " + S_A);
+			System.out.println("ALice and Bob can communicate with each other!!!");
+			System.out.println("They share a secret no = " + S_A);
 		}
 
 		else {
